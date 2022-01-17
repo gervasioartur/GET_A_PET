@@ -22,18 +22,19 @@ module.exports = class UserController {
         if (!email) {
             return res.status(422).json({ message: 'O email é obrigatório!' })
         }
+        if (!phone) {
+            return res.status(422).json({ message: 'O telefne é obrigatório!' })
+        }
         if (!password) {
             return res.status(422).json({ message: 'A senha é obrigatória!' })
         }
         if (!confirmPassword) {
             return res.status(422).json({ message: 'Confirme sua senha!' })
         }
-        if (!phone) {
-            return res.status(422).json({ message: 'O telefne é obrigatório!' })
-        }
+
         //verifying the password i macth
         if (password !== confirmPassword) {
-            return res.status(422).json({ message: 'As não considerem!' })
+            return res.status(422).json({ message: 'As senhas não consisdem!' })
         }
         //check if user exists
         const userExists = await User.findOne({ email: email })
@@ -149,7 +150,7 @@ module.exports = class UserController {
         }
         //verifying the password i macth
         if (password !== confirmPassword) {
-            return res.status(422).json({ message: 'As senhas não considerem!' })
+            return res.status(422).json({ message: 'As senhas não consisdem!' })
         } else if (password === confirmPassword && password != null) {
             //create a password
             const salt = await bcrypt.genSalt(12)
