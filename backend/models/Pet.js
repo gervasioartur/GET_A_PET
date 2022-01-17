@@ -2,7 +2,7 @@ const mongosee = require('../database/conn')
 const { Schema } = mongosee
 
 const Pet = mongosee.model(
-    'User',
+    'Pet',
     new Schema({
         name: {
             type: String,
@@ -35,4 +35,4 @@ const Pet = mongosee.model(
     )
 )
 
-module.exports = User
+module.exports = Pet
